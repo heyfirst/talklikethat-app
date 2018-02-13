@@ -19,15 +19,14 @@ const Footer = () => (
 
 class Index extends React.Component {
     state = {
-        old: 20,
         hello: []
     }
 
     componentWillMount() {
         axios.get('http://localhost:8080/hello/')
-            .then(response => {
+            .then(res => {
                 this.setState({
-                    hello: response.data
+                    hello: res.data
                 })
             })
     }
@@ -37,18 +36,13 @@ class Index extends React.Component {
 
         return (
             <div>
-                <h1>Hi</h1>
-                <p>{ this.state.old }, BKK</p>
-                <button
-                    onClick={() => this.setState({ old: this.state.old+1 })}
-                >
-                    {`ADD`}
-                </button>
                 {
-                    this.state.hello.map(data => (
-                        <h1>{data.content}</h1>
-                    ))
+                    // this.state.hello.map(data => (
+                    //     <h1>{data.content}</h1>
+                    // ))
+                    
                 }
+                <h1>{this.state.hello[0].content}</h1>
             </div>
         )
     }
