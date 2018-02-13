@@ -30,7 +30,7 @@ public class HelloController {
         return "Saved";
     }
 
-    @RequestMapping("/all")
+    @RequestMapping("/")
     public @ResponseBody
     Iterable<Hello> getHello() {
         return helloRepository.findAll();
