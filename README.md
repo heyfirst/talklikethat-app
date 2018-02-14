@@ -2,9 +2,46 @@
 
 software Process Management Project
 
-วิดีโอประกอบการทำงานของระบบ https://youtu.be/gAYpRQKQkj8
+วิดีโอประกอบการทำงานของระบบ (https://youtu.be/gAYpRQKQkj8)[https://youtu.be/gAYpRQKQkj8]
+
+## Pre-requirement
+
+* NodeJS & NPM
+* Yarn
+* Maven
+* MySQL (แนะนำ MariaDB)
+
+หลังจากที่ clone ตัวโปรเจคลงมาแล้ว ต่อไปจะเป็นการใส่ config ที่จำเป็นให้กับทั้งสองระบบคือ Site และ API ดังนี้
+
+### Site
+
+ให้เปิด bash และเข้าไปที่ directory ของโปรเจค Site ดังคำสั่งนี้
+
+### API
+
+ให้เปิด bash และเข้าไปที่ directory ของโปรเจค โดยใช้คำสั่ง
+
+```bash
+cd ./api/src/main/resources
+```
+
+และใช้คำสั่ง
+
+```bash
+cp application.example.properties application.properties
+```
+
+จากนั้นใช้ Text Editor เข้าไปแก้ไขไฟล์ application.properties ที่สร้างมาเมื่อขึ้นตอนก่อนหน้า
+
+```bash
+spring.jpa.hibernate.ddl-auto=none
+spring.datasource.url=                // URI ของ DB ซึ่งต้องประกอบไปด้วย jdbc:mysql://DB_URL:PORT/DB_NAME
+spring.datasource.username=           // Username ของ Database
+spring.datasource.password=           // Password ของ Database
+```
 
 ## How to deploy Site (React.js)
+
 ในขั้นตอนนี้จะไม่พูดถึงการเตรียม Virtual Machine
 
 ก่อนอื่นต้องมี Node.js (แนะนำ version. 8.9.4), yarn, pm2 ก่อน
