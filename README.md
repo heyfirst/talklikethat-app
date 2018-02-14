@@ -1,8 +1,9 @@
 # TalkLikeThat
 
-Software Process Management Project
+กล้าใช้ภาษาอังกฤษไปกับเราที่ Talklikethat สิครับ :)
 
-วิดีโอประกอบการทำงานของระบบ (https://youtu.be/gAYpRQKQkj8)[https://youtu.be/gAYpRQKQkj8]
+> Software Process Management Project
+> วิดีโอประกอบการทำงานของระบบ (https://youtu.be/gAYpRQKQkj8)[https://youtu.be/gAYpRQKQkj8]
 
 ## Pre-requirement
 
