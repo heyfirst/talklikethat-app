@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tlt.talklikethatapi.model.HelloRepository;
 import com.tlt.talklikethatapi.model.Hello;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin
 @Controller
 @RequestMapping(path = "/hello")
 public class HelloController {
