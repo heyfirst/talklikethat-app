@@ -1,6 +1,6 @@
 # TalkLikeThat
 
-software Process Management Project
+Software Process Management Project
 
 วิดีโอประกอบการทำงานของระบบ (https://youtu.be/gAYpRQKQkj8)[https://youtu.be/gAYpRQKQkj8]
 
@@ -13,11 +13,40 @@ software Process Management Project
 
 หลังจากที่ clone ตัวโปรเจคลงมาแล้ว ต่อไปจะเป็นการใส่ config ที่จำเป็นให้กับทั้งสองระบบคือ Site และ API ดังนี้
 
-### Site
+---
+
+## Development
+
+วิธีการพัฒนาโปรเจคทั้งสองในเครื่องแลปท็อปส่วนตัวของตัวเอง
+
+### How to develop Site
 
 ให้เปิด bash และเข้าไปที่ directory ของโปรเจค Site ดังคำสั่งนี้
 
-### API
+```bash
+cd ./api/src/main/resources
+```
+
+สร้างไฟล์ config.js ตามแบบของไฟล์ config.example.js โดยคำสั่งนี้ จากนั้นแก้ไขค่าข้างในไฟล์ด้วย text editor
+
+```bash
+cp site/config.example.js site/config.js
+vi site/config.js
+```
+
+ต่อจากนั้นลง dependency ทั้งหมดด้วยคำสั่ง
+
+```bash
+yarn
+```
+
+ตอนนี้ระบบ Site พร้อมจะทำการใช้งานแล้ว สามารถพัฒนาต่อด้วยคำสั่งดังนี้
+
+```bash
+yarn dev
+```
+
+### How to develop API
 
 ให้เปิด bash และเข้าไปที่ directory ของโปรเจค โดยใช้คำสั่ง
 
@@ -40,7 +69,11 @@ spring.datasource.username=           // Username ของ Database
 spring.datasource.password=           // Password ของ Database
 ```
 
-## How to deploy Site (React.js)
+---
+
+## Deployment
+
+### How to deploy Site (React.js)
 
 ในขั้นตอนนี้จะไม่พูดถึงการเตรียม Virtual Machine
 
@@ -53,21 +86,29 @@ git clone https://github.com/firstziiz/talklikethat-app.git
 cd talklikethat-app
 ```
 
-ต่อจากนั้นลง dependency ทั้งหมดและทำการ build project ให้พร้อมใช้งานด้วยคำสั่ง
+สร้างไฟล์ config.js ตามแบบของไฟล์ config.example.js โดยคำสั่งนี้ จากนั้นแก้ไขค่าข้างในไฟล์ด้วย text editor
 
 ```bash
-yarn && yarn build
+cp site/config.example.js site/config.js
+vi site/config.js
+```
+
+ต่อจากนั้นลง dependency ทั้งหมดด้วยคำสั่ง
+
+```bash
+yarn
 ```
 
 ตอนนี้ระบบ Site พร้อมใช้งานแล้ว จะต้องทำการรันด้วยคำสั่งของ pm2 ดังนี้
 
 ```bash
-pm2 start yarn --name TALKLIKETHAT_SITE -- start
+pm2 start yarn --name TALKLIKETHAT_SITE -- start-prod
 ```
 
 จากนั้นให้เข้าใช้งานที่ `http://IP_ADDRESS:3000` ถือเป็นอันเสร็จอิ้น
 
-## How to deploy API (Spring Boot Framework)
+### How to deploy API (Spring Boot Framework)
+
 ในขั้นตอนนี้จะไม่พูดถึงการเตรียม Virtual Machine
 
 เริ่มจาก Clone โปรเจคจาก GitHub
@@ -113,3 +154,11 @@ mvn package && java -jar target/talklikethat-spring-boot-0.1.0.jar
 
 จะเห็นได้ว่า API สามารถไปดึงข้อมูลจาก DB ออกมาได้
 
+## Members
+
+* **58130500080**: สุธีรา นิธิบุญหิรัญ
+* **58130500105**: กิตติธัช พัศระ
+* **58130500063**: รัญญาภรณ์ ศุภรัตน์รวีกุล
+* **58130500099**: มนัสนันท์ ไพรวัฒนานุพันธ์
+* **58130500055**: พัชรีภรณ์ ศรีเจริญ
+* **58130500009**: คณิศร สุธรรม
