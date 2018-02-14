@@ -11,8 +11,8 @@
     "react-dom": "^16.2.0"
   },
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
+    "dev": "node server.js",
+    "start-staging": "NODE_ENV=staging next build && next start",
+    "start-prod": "NODE_ENV=production next build && next start"
   }
 }
