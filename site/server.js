@@ -14,8 +14,8 @@ app.prepare()
     return handle(req, res)
   })
 
-  server.listen(config.port, (err) => {
+  server.listen(config.apiPath, (err) => {
     if (err) throw err
-    console.log(`> Ready on http://localhost:${config.port}`)
+    console.log(`> Ready on http://localhost:${config.apiPath}`)
   })
 })
