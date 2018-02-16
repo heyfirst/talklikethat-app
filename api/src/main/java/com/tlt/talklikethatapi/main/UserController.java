@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tlt.talklikethatapi.model.User;
 import com.tlt.talklikethatapi.model.UserRepository;
-import com.tlt.talklikethatapi.model.UserRepositoryOfString;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin
