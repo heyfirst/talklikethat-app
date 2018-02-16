@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tlt.talklikethatapi.model.User;
 import com.tlt.talklikethatapi.model.UserRepository;
+import com.tlt.talklikethatapi.model.UserRepositoryOfString;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin
@@ -19,6 +20,7 @@ public class UserController {
     
     @Autowired
     private UserRepository userRepository;
+    private UserRepositoryOfString userRepositoryString;
     
     @RequestMapping("/")
     public @ResponseBody
@@ -31,5 +33,10 @@ public class UserController {
     User getUserById(@RequestParam int id) {
         return userRepository.findOne(id);
     }
-       
+   
+    @RequestMapping("/name")
+    public @ResponseBody
+    User getUserByName(@RequestParam String name){
+        return userRepositoryString.findOne(name);
+    }
 }
