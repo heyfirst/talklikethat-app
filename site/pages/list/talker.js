@@ -48,8 +48,8 @@ const ListFriendTalker = () => (
                                         </Feed>
                                         <Card.Header floated='right'>Name</Card.Header>
                                         <Card.Description floated='right'>Level</Card.Description>
-                                        <Button basic color='olive'>Request</Button>
                                         <Button basic color='blue'>Add Friend</Button>
+                                        <Button basic color='olive'>Request</Button>
                                     </Card.Content>
                                 </Card>
                             ))
