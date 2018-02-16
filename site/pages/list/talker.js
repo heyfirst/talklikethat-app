@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Container, Button, Menu, Dropdown, Icon, Card, Column } from 'semantic-ui-react'
+import { Grid, Container, Button, Menu, Dropdown, Icon, Card, Column, Feed } from 'semantic-ui-react'
 
 const ListFriendTalker = () => (
     <div>
@@ -30,17 +30,26 @@ const ListFriendTalker = () => (
                 </Button.Group>
             </Grid.Column>
         </Container>
-        
+
         <Container>
             <Grid>
                 <Grid.Row>
                     <Grid.Column>
                         {
-                            [...Array(20)].map(e => (
+                            [...Array(10)].map(e => (
                                 <Card fluid>
                                     <Card.Content>
-                                        <Card.Header>KANISORN SUTHAM</Card.Header>
-                                        <Card.Description>ABC</Card.Description>
+                                        <Feed>
+                                            <Feed.Event>
+                                                <Feed.Label>
+                                                <img size='mini' src='https://image.flaticon.com/icons/svg/371/371669.svg' />
+                                                </Feed.Label>
+                                            </Feed.Event>
+                                        </Feed>
+                                        <Card.Header floated='right'>Name</Card.Header>
+                                        <Card.Description floated='right'>Level</Card.Description>
+                                        <Button basic color='olive'>Request</Button>
+                                        <Button basic color='blue'>Add Friend</Button>
                                     </Card.Content>
                                 </Card>
                             ))
