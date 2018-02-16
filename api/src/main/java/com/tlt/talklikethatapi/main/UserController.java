@@ -26,10 +26,10 @@ public class UserController {
         return userRepository.findAll();
     }
     
-//    @RequestMapping("/id")
-//    public @ResponseBody
-//    Iterable<User> getUserById(@RequestParam int id) {
-//        return userRepository.findOne();
-//    }
-    
+    @RequestMapping("/id")
+    public @ResponseBody
+    User getUserById(@RequestParam int id) {
+        return userRepository.findOne(id);
+    }
+       
 }
