@@ -35,12 +35,16 @@ class ListFriendTalker extends Component {
                     <Grid.Row>
                         <Grid.Column>
                             {
-                                [...Array(10)].map((e, index) => (
+                                this.state.talkers.map((talker, index) => (
                                     <Card fluid key={index}>
                                         <Card.Content>
                                             <Image as='img' src='https://image.flaticon.com/icons/svg/371/371669.svg' size='mini' circular />
-                                            <Card.Header as='a'>Name</Card.Header>
-                                            <Card.Description>Level</Card.Description>
+                                            <Card.Header as='a'>
+                                                { talker.displayName }
+                                            </Card.Header>
+                                            <Card.Description>
+                                                <b>Level:</b> { talker.level } | <b>Speech Hours:</b> { talker.speechHours }
+                                            </Card.Description>
                                             <div>
                                                 <Button.Group floated='right' vertical>
                                                     <Button basic color='blue' content='Add Friend' />
