@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Container, Button, Menu, Dropdown, Icon, Card, Column, Modal, Image, Divider } from 'semantic-ui-react'
+import Navbar from '../Core/Navbar'
 
 class ListFriendTalker extends Component {
   state = { open: false }
@@ -12,29 +13,12 @@ class ListFriendTalker extends Component {
 
     return (
         <div>
-          <Menu borderless>
-              <Container>
-                  <Menu.Item header as='h3'>TalkLikeThat</Menu.Item>
-                  <Menu.Menu position='right'>
-                      <Menu.Item as='a'>RANKING</Menu.Item>
-                      <Menu.Item as='a'><Icon name='search' />FIND TALKER</Menu.Item>
-                      <Menu.Item as='a'><Icon name='alarm' /></Menu.Item>
-                      <Dropdown text='Kate' pointing className='link item'>
-                          <Dropdown.Menu>
-                              <Dropdown.Item>My Profile</Dropdown.Item>
-                              <Dropdown.Item>Logout</Dropdown.Item>
-                          </Dropdown.Menu>
-                      </Dropdown>
-                  </Menu.Menu>
-              </Container>
-          </Menu>
-
+          <Navbar />
           <Container>
               <Grid.Column>
                   <Button.Group color='blue' attached='top' buttons={['Filter', 'Random', 'Friend']} />
               </Grid.Column>
           </Container>
-
           <Container>
               <Grid>
                   <Grid.Row>
