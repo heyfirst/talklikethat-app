@@ -3,7 +3,7 @@ import config from '../config'
 
 const createApiInstance = () => (
   axios.create({
-    baseURL: config.graphQLRoot
+    baseURL: config.apiPath
     // headers: {
     //   'x-access-token': window.localStorage.getItem('talklikethat-token') || ''
     // }
