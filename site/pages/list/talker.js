@@ -44,7 +44,7 @@ class ListFriendTalker extends Component {
                                         <Card fluid key={index}>
                                             <Card.Content>
                                                 <Image as='img' src='https://image.flaticon.com/icons/svg/371/371669.svg' size='mini' circular />
-                                                <Card.Header>Name</Card.Header>
+                                                <Card.Header as='a'>Name</Card.Header>
                                                 <Card.Description>Level</Card.Description>
                                                 <div>
                                                     <Button.Group floated='right' vertical>
@@ -81,11 +81,4 @@ class ListFriendTalker extends Component {
     }
 }
 
-// const ListFriendTalker = () => (
-//     <div>
-
-//     </div >
-// )
-
 export default ListFriendTalker
-
