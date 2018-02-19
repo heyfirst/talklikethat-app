@@ -1,65 +1,91 @@
-import React from 'react'
-import { Grid, Container, Button, Menu, Dropdown, Icon, Card, Column, Feed } from 'semantic-ui-react'
+import React, { Component } from 'react'
+import { Grid, Container, Button, Menu, Dropdown, Icon, Card, Column, Modal, Image, Divider } from 'semantic-ui-react'
 
-const ListFriendTalker = () => (
-    <div>
-        <Menu borderless>
-            <Container>
-                <Menu.Item header as='h3'><b>TalkLike</b>That</Menu.Item>
+class ListFriendTalker extends Component {
+    state = { open: false }
 
-                <Menu.Menu position='right'>
-                    <Menu.Item as='a'>RANKING</Menu.Item>
-                    <Menu.Item as='a'><Icon name='search' />FIND TALKER</Menu.Item>
-                    <Menu.Item as='a'><Icon name='alarm' /></Menu.Item>
-                    <Dropdown text='Kate' pointing className='link item'>
-                        <Dropdown.Menu>
-                            <Dropdown.Item>My Profile</Dropdown.Item>
-                            <Dropdown.Item>Logout</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                </Menu.Menu>
-            </Container>
-        </Menu>
+    show = size => () => this.setState({ size, open: true })
+    close = () => this.setState({ open: false })
 
-        <Container>
-            <Grid.Column>
-                <Button.Group attached='top' widths={3}>
-                    <Button>Filter</Button>
-                    <Button>Random</Button>
-                    <Button>Friend</Button>
-                </Button.Group>
-            </Grid.Column>
-        </Container>
+    render() {
+        const { open, size } = this.state
 
-        <Container>
-            <Grid>
-                <Grid.Row>
+        return (
+            <div>
+                <Menu borderless>
+                    <Container>
+                        <Menu.Item header as='h3'>TalkLikeThat</Menu.Item>
+                        <Menu.Menu position='right'>
+                            <Menu.Item as='a'>RANKING</Menu.Item>
+                            <Menu.Item as='a'><Icon name='search' />FIND TALKER</Menu.Item>
+                            <Menu.Item as='a'><Icon name='alarm' /></Menu.Item>
+                            <Dropdown text='Kate' pointing className='link item'>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item>My Profile</Dropdown.Item>
+                                    <Dropdown.Item>Logout</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </Menu.Menu>
+                    </Container>
+                </Menu>
+
+                <Container>
                     <Grid.Column>
-                        {
-                            [...Array(10)].map(e => (
-                                <Card fluid>
-                                    <Card.Content>
-                                        <Feed>
-                                            <Feed.Event>
-                                                <Feed.Label>
-                                                <img size='mini' src='https://image.flaticon.com/icons/svg/371/371669.svg' />
-                                                </Feed.Label>
-                                            </Feed.Event>
-                                        </Feed>
-                                        <Card.Header floated='right'>Name</Card.Header>
-                                        <Card.Description floated='right'>Level</Card.Description>
-                                        <Button basic color='blue'>Add Friend</Button>
-                                        <Button basic color='olive'>Request</Button>
-                                    </Card.Content>
-                                </Card>
-                            ))
-                        }
+                        <Button.Group color='blue' attached='top' buttons={['Filter', 'Random', 'Friend']} />
                     </Grid.Column>
-                </Grid.Row>
-            </Grid>
-        </Container>
-    </div >
-)
+                </Container>
+
+                <Container>
+                    <Grid>
+                        <Grid.Row>
+                            <Grid.Column>
+                                {
+                                    [...Array(10)].map((e, index) => (
+                                        <Card fluid key={index}>
+                                            <Card.Content>
+                                                <Image as='img' src='https://image.flaticon.com/icons/svg/371/371669.svg' size='mini' circular />
+                                                <Card.Header>Name</Card.Header>
+                                                <Card.Description>Level</Card.Description>
+                                                <div>
+                                                    <Button.Group floated='right' vertical>
+                                                        <Button basic color='blue' content='Add Friend' />
+                                                        <Divider hidden />
+                                                        <Button basic color='olive' onClick={this.show('tiny')} content='Request' />
+                                                    </Button.Group>
+
+                                                    <Modal size={size} open={open} onClose={this.close}>
+                                                        <Modal.Header>Waiting for request</Modal.Header>
+                                                        <Modal.Content>
+                                                            <Image.Group size='tiny' circular>
+                                                                <Image as='img' src='https://image.flaticon.com/icons/svg/371/371706.svg' />
+                                                                <Image as='img' src='https://image.flaticon.com/icons/svg/371/371651.svg' />
+                                                            </Image.Group>
+                                                            <p>Kate calling Martin...</p>
+                                                        </Modal.Content>
+                                                        <Modal.Actions>
+                                                            <Button basic color='red' onClick={this.close} content='Cancle' />
+                                                        </Modal.Actions>
+                                                    </Modal>
+                                                </div>
+                                            </Card.Content>
+                                        </Card>
+                                    ))
+                                }
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </Container>
+            </div>
+        )
+
+    }
+}
+
+// const ListFriendTalker = () => (
+//     <div>
+
+//     </div >
+// )
 
 export default ListFriendTalker
 
