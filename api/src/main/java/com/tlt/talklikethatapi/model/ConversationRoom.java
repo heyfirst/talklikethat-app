@@ -13,7 +13,7 @@ public class ConversationRoom {
     private int id;
     private int requester;
     private int requestee;
-    private int statusID;
+    private int statusId;
 
     public int getId() {
         return id;
@@ -39,12 +39,12 @@ public class ConversationRoom {
         this.requestee = requestee;
     }
 
-    public int getStatusID() {
-        return statusID;
+    public int getStatusId() {
+        return statusId;
     }
 
-    public void setStatusID(int statusID) {
-        this.statusID = statusID;
+    public void setStatusId(int statusID) {
+        this.statusId = statusID;
     }
     
     
