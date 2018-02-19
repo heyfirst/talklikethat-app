@@ -65,10 +65,5 @@ public class ConversationRoomController {
         return roomRepository.findByRequester(requester);
     }
     
-    //หาด้วย Requestee ID
-    @RequestMapping("/findRequestee")
-    public @ResponseBody
-    Iterable<ConversationRoom> getRequestee(@RequestParam int requestee) {
-        return roomRepository.findByRequestee(requestee);
-    }
+    
 }
