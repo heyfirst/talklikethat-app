@@ -4,7 +4,7 @@ import { Container, Button, Menu, Dropdown, Icon } from 'semantic-ui-react'
 export default class Navbar extends React.Component {
   render() {
     return (
-      <Menu borderless>
+      <Menu borderless inverted>
           <Container>
               <Menu.Item header as='h3'>TalkLikeThat</Menu.Item>
               <Menu.Menu position='right'>
