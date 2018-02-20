@@ -8,5 +8,5 @@ public interface ConversationRoomRepository extends CrudRepository<ConversationR
     
     List<ConversationRoom> findByRequestee(int requestee);
     
-    
+    List<ConversationRoom> findByStatusId(int statusId);
 }
