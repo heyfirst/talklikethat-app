@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Container, Button, Menu, Dropdown, Icon, Card, Column, Modal, Image, Divider } from 'semantic-ui-react'
 
-class ListFriendTalker extends Component {
+class AcceptRequest extends Component {
     state = { open: false }
 
     show = size => () => this.setState({ size, open: true })
@@ -39,6 +39,7 @@ class ListFriendTalker extends Component {
                     <Grid>
                         <Grid.Row>
                             <Grid.Column>
+                            
                                 {
                                     [...Array(10)].map((e, index) => (
                                         <Card fluid key={index}>
@@ -50,22 +51,8 @@ class ListFriendTalker extends Component {
                                                     <Button.Group floated='right' vertical>
                                                         <Button basic color='blue' content='Add Friend' />
                                                         <Divider hidden />
-                                                        <Button basic color='olive' onClick={this.show('tiny')} content='Request' />
+                                                        <Button basic color='olive' content='Request' />
                                                     </Button.Group>
-
-                                                    <Modal size={size} open={open} onClose={this.close}>
-                                                        <Modal.Header>Waiting for request</Modal.Header>
-                                                        <Modal.Content>
-                                                            <Image.Group size='tiny' circular>
-                                                                <Image as='img' src='https://image.flaticon.com/icons/svg/371/371706.svg' />
-                                                                <Image as='img' src='https://image.flaticon.com/icons/svg/371/371651.svg' />
-                                                            </Image.Group>
-                                                            <p>Kate calling Martin...</p>
-                                                        </Modal.Content>
-                                                        <Modal.Actions>
-                                                            <Button basic color='red' onClick={this.close} content='Cancle' />
-                                                        </Modal.Actions>
-                                                    </Modal>
                                                 </div>
                                             </Card.Content>
                                         </Card>
@@ -75,10 +62,28 @@ class ListFriendTalker extends Component {
                         </Grid.Row>
                     </Grid>
                 </Container>
+
+                  {/* หน้าจอเวลามีคนโทรมาหา */}
+                <Modal size={size} open={open} onClose={this.close}>
+                                                        <Modal.Header>Video calling form Kate</Modal.Header>
+                                                        <Modal.Content>
+                                                            <Image.Group size='tiny' circular>
+                                                                  <Image as='img' src='https://image.flaticon.com/icons/svg/371/371651.svg' />
+                                                                <Image as='img' src='https://image.flaticon.com/icons/svg/371/371706.svg' />      
+                                                            </Image.Group>
+                                                        </Modal.Content>
+                                                        <Modal.Actions>
+                                                            <Button basic color='green' onClick={this.close} content='Accept' />
+                                                            <Button basic color='red' onClick={this.close} content='Cancle' />
+                                                        </Modal.Actions>
+                                                    </Modal>
+               
+
+                
             </div>
         )
 
     }
 }
 
-export default ListFriendTalker
+export default AcceptRequest

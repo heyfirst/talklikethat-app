@@ -12,7 +12,8 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.css" />
+          {/* link rel="stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.css" */}
+          <link rel="stylesheet" href="/static/css/semantic.min.css" />
           <link rel="stylesheet" href="/static/css/global.css"/>
         </Head>
         <body>
