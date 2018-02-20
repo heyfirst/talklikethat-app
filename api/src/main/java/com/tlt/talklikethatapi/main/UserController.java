@@ -19,7 +19,6 @@ public class UserController {
     
     @Autowired
     private UserRepository userRepository;
-    private UserRepositoryOfString userRepositoryString;
     
     @RequestMapping("/")
     public @ResponseBody
@@ -35,7 +34,7 @@ public class UserController {
    
     @RequestMapping("/name")
     public @ResponseBody
-    User getUserByName(@RequestParam String name){
-        return userRepositoryString.findOne(name);
+    Iterable<User> getUserByName(@RequestParam String name){
+        return userRepository.findByName(name);
     }
 }
