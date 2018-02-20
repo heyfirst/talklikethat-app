@@ -7,4 +7,6 @@ public interface ConversationRoomRepository extends CrudRepository<ConversationR
     List<ConversationRoom> findByRequester(int requester);
     
     List<ConversationRoom> findByRequestee(int requestee);
+    
+    
 }

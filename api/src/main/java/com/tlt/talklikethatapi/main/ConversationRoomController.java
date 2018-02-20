@@ -71,4 +71,11 @@ public class ConversationRoomController {
     Iterable<ConversationRoom> getRequestee(@RequestParam int requestee) {
         return roomRepository.findByRequestee(requestee);
     }
+    
+    //หาด้วย status ID
+    @RequestMapping("/findStatusId")
+    public @ResponseBody
+    Iterable<ConversationRoom> getStatusId(@RequestParam int statusId) {
+        return roomRepository.findByStatusId(statusId);
+    }
 }

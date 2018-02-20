@@ -43,8 +43,8 @@ public class ConversationRoom {
         return statusId;
     }
 
-    public void setStatusId(int statusID) {
-        this.statusId = statusID;
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
     }
     
     
