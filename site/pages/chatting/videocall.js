@@ -1,12 +1,9 @@
-import React, { Component } from 'react'
-import {
-    Grid, Container, Button, Menu, Dropdown, Icon, Card, Column, Modal, Image, Divider,
-    Segment, Dimmer, Loader
-} from 'semantic-ui-react'
+import React from 'react'
+import Videocall from '../../components/Conversation/Videocall'
 
-class ChattingVideoCall extends Component {
-    state = { open: false }
+const VideocallPage = props => <Videocall {...props} />
 
+<<<<<<< HEAD
     show = size => () => this.setState({ size, open: true })
     close = () => this.setState({ open: false })
     handleClick = () => this.setState({ active: !this.state.active })
@@ -57,3 +54,6 @@ class ChattingVideoCall extends Component {
 }
 
 export default ChattingVideoCall
+=======
+export default VideocallPage
+>>>>>>> f2c16013d8b1368f4f22ce80c24fc8213f809ff1

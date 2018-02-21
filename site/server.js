@@ -16,6 +16,6 @@ app.prepare()
 
   server.listen(config.port, (err) => {
     if (err) throw err
-    console.log(`> Ready on http://localhost:${config.portdev}`)
+    console.log(`> Ready on http://localhost:${config.port}`)
   })
 })

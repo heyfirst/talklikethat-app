@@ -63,12 +63,18 @@ class AcceptRequest extends Component {
                     </Grid>
                 </Container>
 
-                  {/* หน้าจอเวลามีคนโทรมาหา */}
-                <Modal size={size} open={open} onClose={this.close}>
+
+                  
+      
+                            {/* // หน้าจอเวลามีคนโทรมาหา */}
+                            <Modal size={size} open={open} onClose={this.close} onLoad={this.open}>
                                                         <Modal.Header>Video calling form Kate</Modal.Header>
                                                         <Modal.Content>
                                                             <Image.Group size='tiny' circular>
                                                                   <Image as='img' src='https://image.flaticon.com/icons/svg/371/371651.svg' />
+                                                                   <Image style={{width: 30, height: 30}} as='img' src='https://image.flaticon.com/icons/svg/159/159111.svg' />
+                                                                  <Image style={{width: 50, height: 50}} as='img' src='https://image.flaticon.com/icons/svg/126/126341.svg' />
+                                                              
                                                                 <Image as='img' src='https://image.flaticon.com/icons/svg/371/371706.svg' />      
                                                             </Image.Group>
                                                         </Modal.Content>
@@ -76,8 +82,7 @@ class AcceptRequest extends Component {
                                                             <Button basic color='green' onClick={this.close} content='Accept' />
                                                             <Button basic color='red' onClick={this.close} content='Cancle' />
                                                         </Modal.Actions>
-                                                    </Modal>
-               
+                </Modal>
 
                 
             </div>

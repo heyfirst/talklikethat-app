@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { Grid, Container, Button, Menu, Dropdown, Icon, Card, Column, Modal, Image, Divider } from 'semantic-ui-react'
+import React from 'react'
+import FindTalker from '../../components/Find/Talker'
 
-class ListFriendTalker extends Component {
-    state = { open: false }
+const TalkerPage = props => <FindTalker {...props} />
 
+<<<<<<< HEAD
     show = size => () => this.setState({ size, open: true })
     close = () => this.setState({ open: false })
 
@@ -85,3 +85,6 @@ class ListFriendTalker extends Component {
 }
 
 export default ListFriendTalker
+=======
+export default TalkerPage
+>>>>>>> f2c16013d8b1368f4f22ce80c24fc8213f809ff1

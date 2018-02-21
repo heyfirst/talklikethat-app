@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body onload="showMyFace()" class="container">
+    <video id="yourVideo" autoplay muted playsinline></video>
+    <video id="friendsVideo" autoplay playsinline></video>
+    <br />
+    <button onclick="showFriendsFace()" type="button" class="btn btn-primary btn-lg btn-block"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Call</button>
+    <button onclick="showFriendsFace()" type="button" class="btn btn-danger btn-lg btn-block">Cancel</button>
+    <div class="row">
+      <div style="margin-top: 10px;" class="col-xs-6">
+        <div class="form-group">
+          <label for="">RequesterID: (currentID: <span id="currentID"></span>)</label>
+          <input class="form-control" type="text" name="" id="id">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-default btn-block" onclick="setID()">SUBMIT ID</button>
+        </div>
+      </div>
+      <div style="margin-top: 10px;" class="col-xs-6">
+        <div class="form-group">
+          <label for="">Requestee ID:</label>
+          <input class="form-control" type="text" name="" id="requestee-id">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-warning btn-block" onclick="setRequesteeID()">REQUEST TO</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
