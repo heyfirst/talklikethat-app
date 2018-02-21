@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import { Grid, Container, Button, Menu, Dropdown, Icon, Card, Column, Modal, Image, Divider } from 'semantic-ui-react'
 import Navbar from '../Core/Navbar'
 import axios from '../../lib/axios'
+import withFirebase from '../../lib/withFirebase'
 
 class ListFriendTalker extends Component {
     state = {
         open: false,
-        talkers: []
+        talkers: [],
+        user: {}
     }
 
     async componentWillMount() {
@@ -14,17 +16,36 @@ class ListFriendTalker extends Component {
         this.setState({
             talkers
         })
-      }
+    }
 
-    show = size => () => this.setState({ size, open: true })
+    async componentDidMount() {
+        const firebase = await withFirebase()
+        firebase.database().ref(`/requesting`).on('value', (snapshot) => {
+            const data = snapshot.val();
+            console.log(data)
+        })
+    }
+
+    show = () => this.setState({ size: 'tiny', open: true })
     close = () => this.setState({ open: false })
+
+    request = async () => {
+        this.show()
+        console.log(this.state)
+        const firebase = await withFirebase()
+        firebase.database().ref(`/requesting`).set({
+            request: true
+        })
+    }
+
+    setUser = user => this.setState({ user })
 
     render() {
         const { open, size } = this.state
 
         return (
             <div>
-            <Navbar />
+            <Navbar setUser={this.setUser} />
             <Container style={{marginTop: '5em'}}>
                 <Grid.Column>
                     <Button.Group color='blue' attached='top' buttons={['Filter', 'Random', 'Friend']} />
@@ -48,7 +69,7 @@ class ListFriendTalker extends Component {
                                             <div>
                                                 <Button.Group floated='right' vertical>
                                                     <Button basic color='blue' content='Add Friend' />
-                                                    <Button basic color='olive' onClick={this.show('tiny')} content='Request' />
+                                                    <Button basic color='olive' onClick={() => this.request()} content='Request' />
                                                 </Button.Group>
                                             </div>
                                         </Card.Content>
