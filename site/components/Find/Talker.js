@@ -9,7 +9,9 @@ class ListFriendTalker extends Component {
         callingOpen: false,
         requestOpen: false,
         talkers: [],
-        user: {}
+        user: {},
+        requestee: {},
+        requester: {}
     }
 
     async componentWillMount() {
@@ -21,9 +23,14 @@ class ListFriendTalker extends Component {
 
     async componentDidMount() {
         const firebase = await withFirebase()
-        firebase.database().ref(`/requesting`).on('value', (snapshot) => {
+        firebase.database().ref(`/requesting`).on('value', async (snapshot) => {
             const data = snapshot.val();
-            if (+data.requestee !== this.state.user.id) return
+            const requesteeID = +data.requestee
+            if ( requesteeID !== this.state.user.id) return
+            
+            const requesterID = +data.requester
+            const requester = await axios.get(`/user/id?id=${requesterID}`).then(data => data.data)
+            this.setField('requester', requester)
             this.setField('requestOpen', true)
         })
     }
@@ -31,13 +38,17 @@ class ListFriendTalker extends Component {
     setField = (field, value) => this.setState({ [field]: value })
 
     requestTalker = async id => {
-        this.setField('callingOpen', true)
-        console.log(this.state)
+        
+        const requestee = await axios.get(`/user/id?id=${id}`).then(data => data.data)
         const firebase = await withFirebase()
         firebase.database().ref(`/requesting`).set({
             requestee: id,
+            requester: this.state.user.id,
             timestamp: firebase.database.ServerValue.TIMESTAMP
         })
+
+        this.setField('requestee', requestee)
+        this.setField('callingOpen', true)
     }
 
     setUser = user => this.setState({ user })
@@ -87,26 +98,26 @@ class ListFriendTalker extends Component {
                 </Grid>
             </Container>
             <Modal size={'tiny'} open={callingOpen} onClose={this.close}>
-                <Modal.Header>{`Waiting for request`}</Modal.Header>
+                <Modal.Header>{`Waiting for accept request.`}</Modal.Header>
                 <Modal.Content>
                     <Image.Group size='tiny' circular>
                         <Image as='img' src='https://image.flaticon.com/icons/svg/371/371706.svg' />
                         <Image as='img' src='https://image.flaticon.com/icons/svg/371/371651.svg' />
                     </Image.Group>
-                    <p>{`Kate calling...`}</p>
+                    <p>{`You calling to ${this.state.requestee.name}`}</p>
                 </Modal.Content>
                 <Modal.Actions>
                     <Button basic color='red' onClick={() => this.setField('callingOpen', false)} content='Cancle' />
                 </Modal.Actions>
             </Modal>
             <Modal size={'tiny'} open={requestOpen} onClose={this.close}>
-                <Modal.Header>{`Waiting for confirm`}</Modal.Header>
+                <Modal.Header>{`Waiting for your acceptance.`}</Modal.Header>
                 <Modal.Content>
                     <Image.Group size='tiny' circular>
                         <Image as='img' src='https://image.flaticon.com/icons/svg/371/371706.svg' />
                         <Image as='img' src='https://image.flaticon.com/icons/svg/371/371651.svg' />
                     </Image.Group>
-                    <p>{`Kate calling You...`}</p>
+                    <p>{`${this.state.requester.name} calling to You`}</p>
                 </Modal.Content>
                 <Modal.Actions>
                     <Button basic color='red' onClick={() => this.setField('requestOpen', false)} content='Cancle' />
