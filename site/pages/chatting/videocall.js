@@ -9,9 +9,11 @@ class ChattingVideoCall extends Component {
 
     show = size => () => this.setState({ size, open: true })
     close = () => this.setState({ open: false })
+    handleClick = () => this.setState({ active: !this.state.active })
 
     render() {
         const { open, size } = this.state
+        const { active } = this.state
 
         return (
             <div>
@@ -44,6 +46,7 @@ class ChattingVideoCall extends Component {
                         <Divider hidden />
                         <p>00:00:00</p>
                         <Button basic color='olive' content='Start chat' />
+                        <Button toggle active={active} onClick={this.handleClick} content='Start chat' />
                     </div>
 
                 </Container>

@@ -12,13 +12,14 @@ class ListFriendTalker extends Component {
 
         return (
             <div>
-                <Container>
-                    <Menu>
+
+                <Menu borderless inverted>
+                    <Container>
                         <Menu.Item header as='h3'>TalkLikeThat</Menu.Item>
                         <Menu.Menu position='right'>
                             <Menu.Item as='a'>RANKING</Menu.Item>
                             <Menu.Item as='a'><Icon name='search' />FIND TALKER</Menu.Item>
-                            <Menu.Item as='a'><Icon name='alarm' /></Menu.Item>
+                            <Menu.Item as='a'><Icon name='bell' /></Menu.Item>
                             <Dropdown text='Kate' pointing className='link item'>
                                 <Dropdown.Menu>
                                     <Dropdown.Item>My Profile</Dropdown.Item>
@@ -26,12 +27,12 @@ class ListFriendTalker extends Component {
                                 </Dropdown.Menu>
                             </Dropdown>
                         </Menu.Menu>
-                    </Menu>
-                </Container>
+                    </Container>
+                </Menu>
 
                 <Container>
                     <Grid.Column>
-                        <Button.Group color='blue' attached='top' buttons={['Filter', 'Random', 'Friend']} />
+                        <Button.Group color='black' attached='top' buttons={['Filter', 'Random', 'Friend']} />
                     </Grid.Column>
                 </Container>
 
@@ -43,13 +44,15 @@ class ListFriendTalker extends Component {
                                     [...Array(10)].map((e, index) => (
                                         <Card fluid key={index}>
                                             <Card.Content>
-                                                <Image as='img' src='https://image.flaticon.com/icons/svg/371/371669.svg' size='mini' circular />
-                                                <Card.Header as='a'>Name</Card.Header>
+                                                <Card.Header as='a'>
+                                                    <Image as='img' src='https://image.flaticon.com/icons/svg/371/371669.svg' size='mini' circular />
+                                                    Name
+                                                </Card.Header>
                                                 <Card.Description>Level</Card.Description>
                                                 <div>
                                                     <Button.Group floated='right' vertical>
                                                         <Button basic color='blue' content='Add Friend' />
-                                                        <Divider hidden />
+                                                        <Divider fitted hidden />
                                                         <Button basic color='olive' onClick={this.show('tiny')} content='Request' />
                                                     </Button.Group>
 

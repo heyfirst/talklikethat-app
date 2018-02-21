@@ -10,7 +10,7 @@ export default class Navbar extends React.Component {
               <Menu.Menu position='right'>
                   <Menu.Item as='a'>RANKING</Menu.Item>
                   <Menu.Item as='a'><Icon name='search' />FIND TALKER</Menu.Item>
-                  <Menu.Item as='a'><Icon name='alarm' /></Menu.Item>
+                  <Menu.Item as='a'><Icon name='bell' /></Menu.Item>
                   <Dropdown text='Kate' pointing className='link item'>
                       <Dropdown.Menu>
                           <Dropdown.Item>My Profile</Dropdown.Item>
