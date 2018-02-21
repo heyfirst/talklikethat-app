@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Button, Menu, Dropdown, Icon } from 'semantic-ui-react'
 import axios from '../../lib/axios'
+import Link from 'next/link'
 
 export default class Navbar extends React.Component {
     state = {
@@ -22,7 +23,9 @@ export default class Navbar extends React.Component {
             <Menu fixed={`top`}>
                 <Menu.Item header as='h3'>TalkLikeThat</Menu.Item>
                 <Menu.Menu position='right'>
-                    <Menu.Item as='a'><Icon name='search' />FIND TALKER</Menu.Item>
+                    <Link href="/list/talker">
+                        <Menu.Item as='a'><Icon name='search' />FIND TALKER</Menu.Item>
+                    </Link>
                     <Menu.Item as='a'><Icon name='alarm' /></Menu.Item>
                     <Dropdown text={this.props.user.name} pointing className='link item'>
                         <Dropdown.Menu>
