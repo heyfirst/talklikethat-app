@@ -165,6 +165,7 @@ VideoCall: videocall.talklikethat.ks.in.th
 
 API: api.talklikethat.ks.in.th
 
+DB: 54.255.195.240
 ___
 
 ## Members 👨🏻‍💻
