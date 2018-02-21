@@ -8,6 +8,10 @@ export default class Navbar extends React.Component {
         name: ''
     }
 
+    async componentWillMount() {
+        this.setID(9);    
+    }
+
     setID = async (id) => {
         const talker = await axios.get(`/user/id?id=${id}`).then(data => data.data)
         this.props.setUser(talker)
@@ -20,10 +24,18 @@ export default class Navbar extends React.Component {
                 <Menu.Menu position='right'>
                     <Menu.Item as='a'><Icon name='search' />FIND TALKER</Menu.Item>
                     <Menu.Item as='a'><Icon name='alarm' /></Menu.Item>
-                    <Dropdown text='Kate' pointing className='link item'>
+                    <Dropdown text={this.props.user.name} pointing className='link item'>
                         <Dropdown.Menu>
-                            <Dropdown.Item onClick={() => this.setID(1)}>Set mock ID:1</Dropdown.Item>
-                            <Dropdown.Item onClick={() => this.setID(2)}>Set mock ID:2</Dropdown.Item>
+                            {
+                                [...Array(4)].map((e,index) => (
+                                    <Dropdown.Item 
+                                        key={index}
+                                        onClick={() => this.setID(index)}
+                                    >
+                                        {`Set mock ID: ${index}`}
+                                    </Dropdown.Item>
+                                ))
+                            }
                             <Dropdown.Item>Logout</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>

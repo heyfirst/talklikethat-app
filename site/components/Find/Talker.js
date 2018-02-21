@@ -6,7 +6,8 @@ import withFirebase from '../../lib/withFirebase'
 
 class ListFriendTalker extends Component {
     state = {
-        open: false,
+        callingOpen: false,
+        requestOpen: false,
         talkers: [],
         user: {}
     }
@@ -22,30 +23,35 @@ class ListFriendTalker extends Component {
         const firebase = await withFirebase()
         firebase.database().ref(`/requesting`).on('value', (snapshot) => {
             const data = snapshot.val();
-            console.log(data)
+            if (+data.requestee !== this.state.user.id) return
+            this.setField('requestOpen', true)
         })
     }
 
-    show = () => this.setState({ size: 'tiny', open: true })
-    close = () => this.setState({ open: false })
+    setField = (field, value) => this.setState({ [field]: value })
 
-    request = async () => {
-        this.show()
+    requestTalker = async id => {
+        this.setField('callingOpen', true)
         console.log(this.state)
         const firebase = await withFirebase()
         firebase.database().ref(`/requesting`).set({
-            request: true
+            requestee: id,
+            timestamp: firebase.database.ServerValue.TIMESTAMP
         })
     }
 
     setUser = user => this.setState({ user })
 
+    accept = () => {
+        console.log('hi')
+    }
+
     render() {
-        const { open, size } = this.state
+        const { callingOpen, requestOpen, size } = this.state
 
         return (
             <div>
-            <Navbar setUser={this.setUser} />
+            <Navbar setUser={this.setUser} user={this.state.user}/>
             <Container style={{marginTop: '5em'}}>
                 <Grid.Column>
                     <Button.Group color='blue' attached='top' buttons={['Filter', 'Random', 'Friend']} />
@@ -69,7 +75,7 @@ class ListFriendTalker extends Component {
                                             <div>
                                                 <Button.Group floated='right' vertical>
                                                     <Button basic color='blue' content='Add Friend' />
-                                                    <Button basic color='olive' onClick={() => this.request()} content='Request' />
+                                                    <Button basic color='olive' onClick={() => this.requestTalker(talker.id)} content='Request' />
                                                 </Button.Group>
                                             </div>
                                         </Card.Content>
@@ -80,17 +86,31 @@ class ListFriendTalker extends Component {
                     </Grid.Row>
                 </Grid>
             </Container>
-            <Modal size={size} open={open} onClose={this.close}>
+            <Modal size={'tiny'} open={callingOpen} onClose={this.close}>
                 <Modal.Header>{`Waiting for request`}</Modal.Header>
                 <Modal.Content>
                     <Image.Group size='tiny' circular>
                         <Image as='img' src='https://image.flaticon.com/icons/svg/371/371706.svg' />
                         <Image as='img' src='https://image.flaticon.com/icons/svg/371/371651.svg' />
                     </Image.Group>
-                    <p>{`Kate calling Martin...`}</p>
+                    <p>{`Kate calling...`}</p>
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button basic color='red' onClick={this.close} content='Cancle' />
+                    <Button basic color='red' onClick={() => this.setField('callingOpen', false)} content='Cancle' />
+                </Modal.Actions>
+            </Modal>
+            <Modal size={'tiny'} open={requestOpen} onClose={this.close}>
+                <Modal.Header>{`Waiting for confirm`}</Modal.Header>
+                <Modal.Content>
+                    <Image.Group size='tiny' circular>
+                        <Image as='img' src='https://image.flaticon.com/icons/svg/371/371706.svg' />
+                        <Image as='img' src='https://image.flaticon.com/icons/svg/371/371651.svg' />
+                    </Image.Group>
+                    <p>{`Kate calling You...`}</p>
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button basic color='red' onClick={() => this.setField('requestOpen', false)} content='Cancle' />
+                    <Button basic primary onClick={() => this.accept()} content='Accept' />
                 </Modal.Actions>
             </Modal>
         </div>
