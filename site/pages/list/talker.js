@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Container, Button, Menu, Dropdown, Icon, Card, Column, Modal, Image, Divider ,blink} from 'semantic-ui-react'
+import { Grid, Container, Button, Menu, Dropdown, Icon, Card, Column, Modal, Image, Divider ,Blink} from 'semantic-ui-react'
 
 class ListFriendTalker extends Component {
     state = { open: false }
@@ -59,7 +59,7 @@ class ListFriendTalker extends Component {
                                                             <Image.Group size='tiny' circular>
                                                                 <Image as='img' src='https://image.flaticon.com/icons/svg/371/371706.svg' />
                                                                 <Image style={{width: 50, height: 50}} as='img' src='https://image.flaticon.com/icons/svg/126/126341.svg' />
-                                                               <Image style={{width: 30, height: 30}} as='img' src='https://image.flaticon.com/icons/svg/159/159111.svg' />
+                                                                <Image style={{width: 30, height: 30}} as='img' src='https://image.flaticon.com/icons/svg/159/159111.svg' />
                                                                 <Image as='img' src='https://image.flaticon.com/icons/svg/371/371651.svg' />
                                                             </Image.Group>
                                                             <p>Kate calling Martin...</p>

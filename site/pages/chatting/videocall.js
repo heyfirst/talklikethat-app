@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, Link } from 'react'
 import {
     Grid, Container, Button, Menu, Dropdown, Icon, Card, Column, Modal, Image, Divider,
     Segment, Dimmer, Loader
 } from 'semantic-ui-react'
+// import {Link} from 'react-router-dom'
+import { Z_FIXED } from 'zlib'
 
 class ChattingVideoCall extends Component {
     state = { open: false }
@@ -20,9 +22,9 @@ class ChattingVideoCall extends Component {
                         <Menu.Item header as='h3'>TalkLikeThat</Menu.Item>
                         <Menu.Menu position='right'>
                             <Menu.Item as='a'>RANKING</Menu.Item>
-                            <Menu.Item as='a'><Icon name='search' />FIND TALKER</Menu.Item>
+                            <Menu.Item as='a' to ='list/talker' ><Icon name='search' />FIND TALKER</Menu.Item>
                             <Menu.Item as='a'><Icon name='alarm' /></Menu.Item>
-                            <Dropdown text='Kate' pointing className='link item'>
+                            <Dropdown text='Kate' pointing className='link item' >
                                 <Dropdown.Menu>
                                     <Dropdown.Item>My Profile</Dropdown.Item>
                                     <Dropdown.Item>Logout</Dropdown.Item>
@@ -34,7 +36,7 @@ class ChattingVideoCall extends Component {
 
                 <Container>
                     <Segment>
-                        <Dimmer active>
+                        <Dimmer active >
                             <Loader size='small'>Loading</Loader>
                         </Dimmer>
                         <Image src='https://cdn.gottabemobile.com/wp-content/uploads/2012/05/Google+-Hangout-iPad-Google+.jpg' />
