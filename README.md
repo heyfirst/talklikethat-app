@@ -161,6 +161,8 @@ ___
 
 Site: site.talklikethat.ks.in.th
 
+VideoCall: videocall.talklikethat.ks.in.th
+
 ___
 
 ## Members 👨🏻‍💻
