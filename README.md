@@ -163,6 +163,8 @@ Site: site.talklikethat.ks.in.th
 
 VideoCall: videocall.talklikethat.ks.in.th
 
+API: api.talklikethat.ks.in.th
+
 ___
 
 ## Members 👨🏻‍💻
