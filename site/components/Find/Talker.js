@@ -25,7 +25,7 @@ class ListFriendTalker extends Component {
         return (
             <div>
             <Navbar />
-            <Container>
+            <Container style={{marginTop: '5em'}}>
                 <Grid.Column>
                     <Button.Group color='blue' attached='top' buttons={['Filter', 'Random', 'Friend']} />
                 </Grid.Column>
@@ -48,23 +48,8 @@ class ListFriendTalker extends Component {
                                             <div>
                                                 <Button.Group floated='right' vertical>
                                                     <Button basic color='blue' content='Add Friend' />
-                                                    <Divider hidden />
                                                     <Button basic color='olive' onClick={this.show('tiny')} content='Request' />
                                                 </Button.Group>
-
-                                                <Modal size={size} open={open} onClose={this.close}>
-                                                    <Modal.Header>Waiting for request</Modal.Header>
-                                                    <Modal.Content>
-                                                        <Image.Group size='tiny' circular>
-                                                            <Image as='img' src='https://image.flaticon.com/icons/svg/371/371706.svg' />
-                                                            <Image as='img' src='https://image.flaticon.com/icons/svg/371/371651.svg' />
-                                                        </Image.Group>
-                                                        <p>Kate calling Martin...</p>
-                                                    </Modal.Content>
-                                                    <Modal.Actions>
-                                                        <Button basic color='red' onClick={this.close} content='Cancle' />
-                                                    </Modal.Actions>
-                                                </Modal>
                                             </div>
                                         </Card.Content>
                                     </Card>
@@ -74,6 +59,19 @@ class ListFriendTalker extends Component {
                     </Grid.Row>
                 </Grid>
             </Container>
+            <Modal size={size} open={open} onClose={this.close}>
+                <Modal.Header>{`Waiting for request`}</Modal.Header>
+                <Modal.Content>
+                    <Image.Group size='tiny' circular>
+                        <Image as='img' src='https://image.flaticon.com/icons/svg/371/371706.svg' />
+                        <Image as='img' src='https://image.flaticon.com/icons/svg/371/371651.svg' />
+                    </Image.Group>
+                    <p>{`Kate calling Martin...`}</p>
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button basic color='red' onClick={this.close} content='Cancle' />
+                </Modal.Actions>
+            </Modal>
         </div>
         )
     }
