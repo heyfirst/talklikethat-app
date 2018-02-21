@@ -157,6 +157,12 @@ mvn package && java -jar target/talklikethat-spring-boot-0.1.0.jar
 
 ___
 
+## VM
+
+Site: site.talklikethat.ks.in.th
+
+___
+
 ## Members 👨🏻‍💻
 
 * **58130500080**: สุธีรา นิธิบุญหิรัญ
